@@ -1,0 +1,18 @@
+# React Course
+
+This is a personal note for the things I’ve learned while studying React. It covers the basic to intermediate concepts needed to build a React app.
+
+## Environment
+
+| NodeJS |
+| :----: |
+|  20.x  |
+
+## Code Editor
+
+- **[Visual Studio Code](https://code.visualstudio.com/)**
+
+### Recommended Extensions
+
+- [**ESLint**](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) – Linting for JavaScript/React code
+- [**Prettier - Code formatter**](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) – Format code automatically for consistency
