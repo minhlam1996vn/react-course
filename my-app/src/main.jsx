@@ -1,5 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
+import './index.css'
 
 function Header() {
   return <h1>Header</h1>
@@ -13,7 +14,7 @@ function Pizza() {
   return (
     <div>
       <img src="https://placehold.co/160x90" alt="Pizza" />
-      <h2>Pizza Title</h2>
+      <h3>Pizza Title</h3>
       <div>Pizza Description</div>
     </div>
   )
@@ -31,7 +32,7 @@ function Menu() {
 
 export function App() {
   return (
-    <div>
+    <div className="container">
       <Header />
       <Menu />
       <Footer />
