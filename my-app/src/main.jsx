@@ -10,12 +10,13 @@ function Footer() {
   return <div>Footer</div>
 }
 
-function Pizza() {
+function Pizza(props) {
   return (
     <div>
-      <img src="https://placehold.co/160x90" alt="Pizza" />
-      <h3>Pizza Title</h3>
-      <div>Pizza Description</div>
+      <img src={props.photoName} alt={props.name} />
+      <h3>{props.name}</h3>
+      <p>{props.ingredients}</p>
+      <span>{props.price + 4}</span>
     </div>
   )
 }
@@ -24,8 +25,18 @@ function Menu() {
   return (
     <div>
       <h2>Our Menu</h2>
-      <Pizza />
-      <Pizza />
+      <Pizza
+        name="Pizza Prosciutto"
+        ingredients="Tomato, mozarella"
+        price={18}
+        photoName="http://placehold.co/160x90"
+      />
+      <Pizza
+        name="Pizza Salamino"
+        ingredients="Tomato, mozarella, ham, aragula, and burrata cheese"
+        price={4}
+        photoName="http://placehold.co/160x90"
+      />
     </div>
   )
 }
