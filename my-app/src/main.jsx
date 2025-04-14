@@ -57,7 +57,22 @@ function Header() {
 }
 
 function Footer() {
-  return <div>Open Today</div>
+  const currentHour = new Date().getHours()
+  const openHour = 8
+  const closedHour = 22
+  const isOpen = currentHour >= openHour && currentHour <= closedHour
+  console.log(isOpen)
+
+  return (
+    isOpen && (
+      <div className="order">
+        <p>
+          We are open until {closedHour}:00. Come and visit us or order online
+        </p>
+        <button className="btn">Order</button>
+      </div>
+    )
+  )
 }
 
 function Pizza(props) {
