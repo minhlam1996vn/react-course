@@ -37,7 +37,7 @@ function App() {
           itemSelected={onItemSelected}
         />
       </div>
-      <Footer />
+      <Footer items={items} />
     </div>
   )
 }
