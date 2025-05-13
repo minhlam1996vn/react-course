@@ -16,3 +16,11 @@ This is a personal note for the things I’ve learned while studying React. It c
 
 - [**ESLint**](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) – Linting for JavaScript/React code
 - [**Prettier - Code formatter**](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) – Format code automatically for consistency
+
+<!--
+1. my-app
+2. events-app
+3. friends-bill-shase
+4. grocery-list
+5. tabbing-app
+ -->
