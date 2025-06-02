@@ -1,12 +1,13 @@
 import './App.css'
 import NavBar from './components/NavBar'
 import Main from './components/Main'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import NumResults from './components/NumResults'
 import ListBox from './components/ListBox'
 import BooksList from './components/BooksList'
 import BooksReadSummary from './components/BooksReadSummary'
 import BooksReadList from './components/BooksReadList'
+import { FormatBookResponse } from './services/FormatBookResponse'
 
 const Books = [
   {
@@ -82,9 +83,23 @@ const BooksRead = [
   },
 ]
 
+const KEY = `AIzaSyDd8zjqw7paHROuV-wUP-ZNvUXmGornx0c`
+
 function App() {
-  const [booksData] = useState(Books)
+  const [booksData, setBooksData] = useState(Books)
   const [booksReadData] = useState(BooksRead)
+
+  async function fetchPosts() {
+    const response = await fetch(
+      `https://www.googleapis.com/books/v1/volumes?q=monk+ferarri&key=${KEY}`
+    )
+    const data = await response.json()
+    setBooksData(FormatBookResponse(data))
+  }
+
+  useEffect(() => {
+    fetchPosts()
+  }, [])
 
   return (
     <>
