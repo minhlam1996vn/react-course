@@ -1,6 +1,4 @@
-import { Children, useState } from 'react'
-import BooksReadList from './BooksReadList'
-import BooksReadSummary from './BooksReadSummary'
+import { useState } from 'react'
 
 export default function StudiedList({ children }) {
   const [isOpen, setIsOpen] = useState(true)

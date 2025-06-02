@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import BooksList from './BooksList'
 
 export default function ListBox({ children }) {
   const [isOpen, setIsOpen] = useState(true)
