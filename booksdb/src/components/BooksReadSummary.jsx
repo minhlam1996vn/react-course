@@ -4,7 +4,6 @@ export default function BooksReadSummary() {
       <h3>Books You Read</h3>
       <div className="d-flex justify-content-between">
         <div>
-          Add commentMore actions
           <span>📘</span>
           <span>2 Books</span>
         </div>
