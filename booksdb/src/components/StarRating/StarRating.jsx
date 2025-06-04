@@ -28,6 +28,7 @@ export default function StarRating({
         <Star
           key={i}
           color={color}
+          full={tempRating ? tempRating >= i + 1 : rating >= i + 1}
           onRate={() => handleRating(i + 1)}
           onHoverIn={() => setTempRating(i + 1)}
           onHoverOut={() => setTempRating(0)}

@@ -4,7 +4,7 @@ export default function Star({ onRate, full, onHoverIn, onHoverOut, color }) {
     height: '40px',
   }
   return (
-    <span onClick={onRate} onMouseOver={onHoverIn} onMouseOut={onHoverOut}>
+    <span onClick={onRate} onMouseEnter={onHoverIn} onMouseLeave={onHoverOut}>
       {full ? (
         <svg
           style={starStyles}
