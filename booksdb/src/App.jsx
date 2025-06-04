@@ -11,6 +11,7 @@ import { FormatBookResponse } from './services/FormatBookResponse'
 import Loader from './components/Loader'
 import ErrorMessage from './components/ErrorMessage'
 import Search from './components/Search'
+import BookDetails from './components/BookDetails'
 
 const BooksRead = [
   {
@@ -57,6 +58,15 @@ function App() {
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState('')
   const [query, setQuery] = useState('monk+ferarri')
+  const [selectedId, setSelectedId] = useState('')
+
+  function handleSelectedId(id) {
+    setSelectedId((selectedId) => (id === selectedId ? '' : id))
+  }
+
+  function handleBack() {
+    setSelectedId('')
+  }
 
   async function fetchPosts() {
     try {
@@ -94,12 +104,23 @@ function App() {
       <Main>
         <ListBox>
           {isLoading && <Loader />}
-          {!isLoading && !error && <BooksList booksData={booksData} />}
+          {!isLoading && !error && (
+            <BooksList
+              booksData={booksData}
+              handleSelectedId={handleSelectedId}
+            />
+          )}
           {error && <ErrorMessage message={error} />}
         </ListBox>
         <ListBox>
-          <BooksReadSummary />
-          <BooksReadList booksRead={booksReadData} />
+          {selectedId ? (
+            <BookDetails selectedId={selectedId} handleBack={handleBack} />
+          ) : (
+            <>
+              <BooksReadSummary />
+              <BooksReadList booksRead={booksReadData} />
+            </>
+          )}
         </ListBox>
       </Main>
     </>

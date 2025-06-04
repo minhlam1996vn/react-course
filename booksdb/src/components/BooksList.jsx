@@ -1,10 +1,14 @@
 import Book from './Book'
 
-export default function BooksList({ booksData }) {
+export default function BooksList({ booksData, handleSelectedId }) {
   return (
     <ul className="books-list">
       {booksData.map((book) => (
-        <Book key={book.isbn} book={book} />
+        <Book
+          book={book}
+          key={book.isbn}
+          handleSelectedId={() => handleSelectedId(book.isbn)}
+        />
       ))}
     </ul>
   )
