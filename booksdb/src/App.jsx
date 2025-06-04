@@ -83,6 +83,7 @@ function App() {
               selectedId={selectedId}
               handleBack={handleBack}
               onBookRead={handleBookRead}
+              booksReadData={booksReadData}
             />
           ) : (
             <>
