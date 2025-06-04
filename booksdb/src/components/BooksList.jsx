@@ -7,7 +7,7 @@ export default function BooksList({ booksData, handleSelectedId }) {
         <Book
           book={book}
           key={book.isbn}
-          handleSelectedId={() => handleSelectedId(book.isbn)}
+          handleSelectedId={() => handleSelectedId(book.id)}
         />
       ))}
     </ul>
