@@ -14,7 +14,7 @@ export default function BookDetails({
   const [userRating, setUserRating] = useState(0)
 
   const isRated = booksReadData.map((book) => book.id).includes(selectedId)
-  // const ratedBook = booksReadData.find((book) => book.id === selectedId)
+  const ratedBook = booksReadData.find((book) => book.id === selectedId)
 
   async function getBookDetails() {
     setIsLoading(true)
@@ -65,7 +65,7 @@ export default function BookDetails({
             </div>
           </div>
           {isRated ? (
-            'You already rated this book'
+            `You already rated this book with ${ratedBook.userRating} stars`
           ) : (
             <div>
               <div>
