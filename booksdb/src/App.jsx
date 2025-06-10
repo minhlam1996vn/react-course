@@ -71,11 +71,27 @@ function App() {
       return
     }
     fetchPosts()
+    handleBack()
     return () => {
       console.log('Cleaning up fetchPosts')
       controller.abort()
     }
   }, [query])
+
+  useEffect(() => {
+    function callback(e) {
+      if (e.code === 'Escape') {
+        handleBack()
+        console.log('closing')
+      }
+    }
+
+    document.addEventListener('keydown', callback)
+
+    return () => {
+      document.removeEventListener('keydown', callback)
+    }
+  })
 
   return (
     <>
