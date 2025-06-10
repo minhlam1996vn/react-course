@@ -46,7 +46,9 @@ function App() {
         `https://www.googleapis.com/books/v1/volumes?q=${query}&key=${KEY}`
       )
       const data = await response.json()
+      console.log('fetchPosts')
       console.log(data)
+      console.log('./fetchPosts')
       if (!data.items?.length) throw new Error('No Books Data Available')
       setBooksData(FormatBookResponse(data))
       setIsLoading(false)
