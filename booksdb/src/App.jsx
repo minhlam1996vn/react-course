@@ -19,7 +19,7 @@ function App() {
   const [booksReadData, setBooksReadData] = useState([])
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState('')
-  const [query, setQuery] = useState('monk+ferarri')
+  const [query, setQuery] = useState('')
   const [selectedId, setSelectedId] = useState('')
 
   function handleSelectedId(id) {
@@ -38,12 +38,18 @@ function App() {
     setBooksReadData(booksData)
   }
 
+  // https://developer.mozilla.org/en-US/docs/Web/API/AbortController
+  const controller = new AbortController()
+
   async function fetchPosts() {
     try {
       setIsLoading(true)
       setError('')
       const response = await fetch(
-        `https://www.googleapis.com/books/v1/volumes?q=${query}&key=${KEY}`
+        `https://www.googleapis.com/books/v1/volumes?q=${query}&key=${KEY}`,
+        {
+          signal: controller.signal,
+        }
       )
       const data = await response.json()
       console.log('fetchPosts')
@@ -51,11 +57,12 @@ function App() {
       console.log('./fetchPosts')
       if (!data.items?.length) throw new Error('No Books Data Available')
       setBooksData(FormatBookResponse(data))
-      setIsLoading(false)
     } catch (error) {
+      if (error.name !== 'AbortError') {
+        setError(error.message)
+      }
+    } finally {
       setIsLoading(false)
-      setError(error.message)
-      console.log(error.message)
     }
   }
 
@@ -64,6 +71,10 @@ function App() {
       return
     }
     fetchPosts()
+    return () => {
+      console.log('Cleaning up fetchPosts')
+      controller.abort()
+    }
   }, [query])
 
   return (
