@@ -12,18 +12,18 @@ import Loader from './components/Loader'
 import ErrorMessage from './components/ErrorMessage'
 import Search from './components/Search'
 import BookDetails from './components/BookDetails'
+import { useBooks } from './services/useBooks'
 
 const KEY = `AIzaSyDd8zjqw7paHROuV-wUP-ZNvUXmGornx0c`
 function App() {
-  const [booksData, setBooksData] = useState([])
-  const [isLoading, setIsLoading] = useState(false)
-  const [error, setError] = useState('')
   const [query, setQuery] = useState('')
   const [selectedId, setSelectedId] = useState('')
 
+  const { isLoading, error, booksData } = useBooks(query, handleBack)
+
   const [booksReadData, setBooksReadData] = useState(function () {
     const books = localStorage.getItem('readlist')
-    return JSON.parse(books) ?? []
+    return JSON.parse(books)
   })
 
   function handleSelectedId(id) {
@@ -46,46 +46,6 @@ function App() {
     localStorage.setItem('readlist', JSON.stringify(booksReadData))
   }, [booksReadData])
 
-  // https://developer.mozilla.org/en-US/docs/Web/API/AbortController
-  const controller = new AbortController()
-
-  async function fetchPosts() {
-    try {
-      setIsLoading(true)
-      setError('')
-      const response = await fetch(
-        `https://www.googleapis.com/books/v1/volumes?q=${query}&key=${KEY}`,
-        {
-          signal: controller.signal,
-        }
-      )
-      const data = await response.json()
-      console.log('fetchPosts')
-      console.log(data)
-      console.log('./fetchPosts')
-      if (!data.items?.length) throw new Error('No Books Data Available')
-      setBooksData(FormatBookResponse(data))
-    } catch (error) {
-      if (error.name !== 'AbortError') {
-        setError(error.message)
-      }
-    } finally {
-      setIsLoading(false)
-    }
-  }
-
-  useEffect(() => {
-    if (query.length < 4) {
-      return
-    }
-    fetchPosts()
-    handleBack()
-    return () => {
-      console.log('Cleaning up fetchPosts')
-      controller.abort()
-    }
-  }, [query])
-
   useEffect(() => {
     function callback(e) {
       if (e.code === 'Escape') {
@@ -99,7 +59,7 @@ function App() {
     return () => {
       document.removeEventListener('keydown', callback)
     }
-  })
+  }, [handleBack])
 
   return (
     <>
