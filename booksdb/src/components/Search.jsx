@@ -1,27 +1,16 @@
-import { useEffect, useRef } from 'react'
+import { useRef } from 'react'
+import { useKeyDownEvent } from '../services/useKeyDownEvent'
 
 export default function Search({ query, setQuery }) {
   const inputRef = useRef(null)
 
-  useEffect(() => {
-    function callback(e) {
-      console.log(e.code)
-      if (e.code === 'Enter' || e.code === 'NumpadEnter') {
-        const activeElement = document.activeElement
-        inputRef.current.focus()
-        if (activeElement !== inputRef.current) {
-          setQuery('')
-        }
-      }
-    }
-
-    document.addEventListener('keydown', callback)
+  useKeyDownEvent('enter', function () {
+    const activeElement = document.activeElement
     inputRef.current.focus()
-
-    return () => {
-      document.removeEventListener('keydown', callback)
+    if (activeElement !== inputRef.current) {
+      setQuery('')
     }
-  }, [])
+  })
 
   return (
     <input
