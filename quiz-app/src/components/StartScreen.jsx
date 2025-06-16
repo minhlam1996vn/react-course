@@ -8,7 +8,7 @@ export default function StartScreen({ questionsCount, dispatch }) {
           className="btn start-btn"
           onClick={() => dispatch({ type: 'start' })}
         >
-          Add commentMore actions Let's Start
+          Let's Start
         </button>
       </div>
     </div>
