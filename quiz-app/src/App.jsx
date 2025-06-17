@@ -9,6 +9,7 @@ import Question from './components/Question'
 import NextButton from './components/NextButton'
 import Progress from './components/Progress'
 import FinishScreen from './components/FinishScreen'
+import Timer from './components/Timer'
 
 const initialState = {
   questions: [],
@@ -16,6 +17,7 @@ const initialState = {
   index: 0,
   newAnswer: null,
   points: 0,
+  secondsRemaining: 10,
 }
 
 function reducer(state, action) {
@@ -42,12 +44,17 @@ function reducer(state, action) {
 
     case 'finish':
       return { ...state, status: 'finished' }
+
+    case 'restart':
+      return { ...initialState, questions: state.questions, status: 'ready' }
   }
 }
 
 function App() {
-  const [{ status, questions, index, newAnswer, points }, dispatch] =
-    useReducer(reducer, initialState)
+  const [
+    { status, questions, index, newAnswer, points, secondsRemaining },
+    dispatch,
+  ] = useReducer(reducer, initialState)
   const questionsCount = questions.length
 
   const maxPoints = questions.reduce((acc, curr) => acc + curr.points, 0)
@@ -96,16 +103,29 @@ function App() {
               dispatch={dispatch}
               newAnswer={newAnswer}
             />
-            <NextButton
-              newAnswer={newAnswer}
-              dispatch={dispatch}
-              index={index}
-              questionsCount={questionsCount}
-            />
+            <div
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+              }}
+            >
+              <Timer seconds={secondsRemaining} />
+              <NextButton
+                newAnswer={newAnswer}
+                dispatch={dispatch}
+                index={index}
+                questionsCount={questionsCount}
+              />
+            </div>
           </>
         )}
         {status === 'finished' && (
-          <FinishScreen points={points} maxPoints={maxPoints} />
+          <FinishScreen
+            points={points}
+            maxPoints={maxPoints}
+            dispatch={dispatch}
+          />
         )}
       </Main>
     </div>
