@@ -85,7 +85,8 @@
 				"Nitrogen",
 				"Methane"
 			],
-			"correctAnswer": "Nitrogen"
+			"correctAnswer": "Nitrogen",
+			"points": 10
 		},
 		{
 			"question": "What is the smallest prime number?",
@@ -128,7 +129,8 @@
 				"Ag",
 				"Co"
 			],
-			"correctAnswer": "H2O"
+			"correctAnswer": "H2O",
+			"points": 10
 		},
 		{
 			"question": "Who is the author of 'The Great Gatsby'?",
