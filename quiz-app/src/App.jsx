@@ -6,12 +6,14 @@ import Loader from './components/Loader'
 import Error from './components/Error'
 import StartScreen from './components/StartScreen'
 import Question from './components/Question'
+import NextButton from './components/NextButton'
 
 const initialState = {
   questions: [],
   status: 'loading', //loading, ready, error, active, finished
   index: 0,
   newAnswer: null,
+  points: 0,
 }
 
 function reducer(state, action) {
@@ -27,6 +29,14 @@ function reducer(state, action) {
 
     case 'newAnswer':
       return { ...state, newAnswer: action.payload }
+
+    case 'nextQuestion':
+      const question = state.questions[state.index]
+      let points = state.points
+      if (question.correctAnswer === state.newAnswer) {
+        points = points + question.points
+      }
+      return { ...state, index: state.index + 1, newAnswer: null, points }
   }
 }
 
@@ -53,17 +63,28 @@ function App() {
     <div className="container">
       <Header />
       <Main>
+        <pre>
+          status: {status} <br />
+          questionsCount: {questionsCount} <br />
+          index: {index} <br />
+          newAnswer: {newAnswer ? JSON.stringify(newAnswer) : 'null'}
+          <br />
+          {/* questions: {JSON.stringify(questions, null, 2)} */}
+        </pre>
         {status === 'loading' && <Loader />}
         {status === 'error' && <Error />}
         {status === 'ready' && (
           <StartScreen questionsCount={questionsCount} dispatch={dispatch} />
         )}
         {status === 'active' && (
-          <Question
-            question={questions[index]}
-            dispatch={dispatch}
-            newAnswer={newAnswer}
-          />
+          <>
+            <Question
+              question={questions[index]}
+              dispatch={dispatch}
+              newAnswer={newAnswer}
+            />
+            <NextButton newAnswer={newAnswer} dispatch={dispatch} />
+          </>
         )}
       </Main>
     </div>
