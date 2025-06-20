@@ -9,6 +9,12 @@ export async function loader({ params }) {
 export default function Contact() {
   const contactDetails = useLoaderData()
 
+  function deleteContact(event) {
+    if (!confirm('r u sure you want to delete?')) {
+      event.preventDefault()
+    }
+  }
+
   const contact = {
     first: 'Your',
     last: 'Name',
@@ -40,7 +46,7 @@ export default function Contact() {
           <Form action="edit">
             <button>Edit</button>&nbsp;
           </Form>
-          <Form action="destroy" method="post">
+          <Form action="destroy" method="post" onSubmit={deleteContact}>
             <button>Delete</button>
           </Form>
         </div>

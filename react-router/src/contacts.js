@@ -36,3 +36,14 @@ export async function updateContact(contactId, updates) {
   localStorage.setItem('contacts', JSON.stringify(contacts))
   return contact
 }
+
+export async function deleteContact(id) {
+  let contacts = await getContacts()
+  console.log('deleting contact with id:', id)
+
+  let index = contacts.findIndex((contact) => contact.id === id)
+  if (index >= -1) {
+    contacts.splice(index, 1)
+    localStorage.setItem('contacts', JSON.stringify(contacts))
+  }
+}
