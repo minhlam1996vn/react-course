@@ -8,8 +8,11 @@ import {
 } from 'react-router'
 import { createContact, getContacts } from '../contacts'
 
-export async function loader() {
-  let contacts = await getContacts()
+export async function loader({ request }) {
+  const url = new URL(request.url)
+  const q = url.searchParams.get('q')
+
+  let contacts = await getContacts(q)
   return { contacts }
 }
 
@@ -29,7 +32,9 @@ export default function Root() {
           <div>{JSON.stringify(navigation, null, 2)}</div>
           <div className="search-box">
             <div>
-              <input type="text" placeholder="Search" />
+              <Form>
+                <input type="search" placeholder="Search" name="q" />
+              </Form>
             </div>
             <div>
               <Form method="post">
