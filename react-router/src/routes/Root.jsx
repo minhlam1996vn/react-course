@@ -2,20 +2,18 @@ import { Form, Link, Outlet, useLoaderData } from 'react-router'
 import { createContact, getContacts } from '../contacts'
 
 export async function loader() {
-  console.log('loader')
   let contacts = await getContacts()
   return { contacts }
 }
 
 export async function action() {
-  console.log('action')
   const contact = await createContact()
   return { contact }
 }
 
 export default function Root() {
   let { contacts } = useLoaderData()
-  console.log(contacts)
+
   return (
     <>
       <div id="container">

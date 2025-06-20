@@ -1,4 +1,14 @@
+import { useLoaderData } from 'react-router'
+import { getContact } from '../contacts'
+
+export async function loader({ params }) {
+  let contact = await getContact(params.contactId)
+  return { contact }
+}
+
 export default function Contact() {
+  const contactDetails = useLoaderData()
+
   const contact = {
     first: 'Your',
     last: 'Name',
@@ -6,7 +16,9 @@ export default function Contact() {
     twitter: 'your_handle',
     notes: 'Some notes',
     favorite: true,
+    ...contactDetails.contact,
   }
+
   return (
     <div id="contact">
       <div>
