@@ -1,5 +1,11 @@
 // import { Form, Link, Outlet, useLoaderData } from 'react-router';
-import { Form, NavLink, Outlet, useLoaderData } from 'react-router'
+import {
+  Form,
+  NavLink,
+  Outlet,
+  useLoaderData,
+  useNavigation,
+} from 'react-router'
 import { createContact, getContacts } from '../contacts'
 
 export async function loader() {
@@ -14,11 +20,13 @@ export async function action() {
 
 export default function Root() {
   let { contacts } = useLoaderData()
+  const navigation = useNavigation()
 
   return (
     <>
       <div id="container">
         <div id="sidebar">
+          <div>{JSON.stringify(navigation, null, 2)}</div>
           <div className="search-box">
             <div>
               <input type="text" placeholder="Search" />
@@ -52,7 +60,10 @@ export default function Root() {
             )}
           </nav>
         </div>
-        <div id="detail">
+        <div
+          id="detail"
+          className={navigation.state === 'loading' ? 'loading' : ''}
+        >
           <Outlet />
         </div>
       </div>
