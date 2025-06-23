@@ -5,6 +5,7 @@ import {
   Outlet,
   useLoaderData,
   useNavigation,
+  useSubmit,
 } from 'react-router'
 import { createContact, getContacts } from '../contacts'
 import { useEffect, useState } from 'react'
@@ -26,6 +27,11 @@ export default function Root() {
   let { contacts, q } = useLoaderData()
   const [query, setQuery] = useState(q)
   const navigation = useNavigation()
+  const submit = useSubmit()
+
+  const searching =
+    navigation.location &&
+    new URLSearchParams(navigation.location.search).has('q')
 
   useEffect(() => {
     setQuery(q)
@@ -33,6 +39,7 @@ export default function Root() {
 
   function onSearch(event) {
     setQuery(event.target.value)
+    submit(event.currentTarget.form)
   }
 
   return (
@@ -51,6 +58,7 @@ export default function Root() {
                   value={query}
                   onChange={onSearch}
                 />
+                <div id="search-spinner" hidden={!searching}></div>
               </Form>
             </div>
             <div>
