@@ -1,14 +1,16 @@
-import { Form, useLoaderData } from 'react-router'
-import { getContact } from '../contacts'
+import { Form, useFetcher, useLoaderData } from 'react-router'
+import { getContact, updateContact } from '../contacts'
 
 export async function loader({ params }) {
   let contact = await getContact(params.contactId)
   return { contact }
 }
 
-export async function favoriteAction({ request }) {
-  console.log(request)
-  return 'hi'
+export async function favoriteAction({ request, params }) {
+  console.log(params)
+  let formData = await request.formData()
+  let favorite = formData.get('favorite') === 'true'
+  return await updateContact(params.contactId, { favorite })
 }
 
 export default function Contact() {
@@ -65,11 +67,12 @@ export default function Contact() {
 
 export function Favorite({ contact }) {
   let favorite = contact.favorite
+  let fetcher = useFetcher()
   return (
-    <Form method="post">
+    <fetcher.Form method="post">
       <button name="favorite" value={favorite ? 'false' : 'true'}>
         {favorite ? '★' : '☆'}
       </button>
-    </Form>
+    </fetcher.Form>
   )
 }

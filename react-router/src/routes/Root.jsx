@@ -25,7 +25,7 @@ export async function action() {
 
 export default function Root() {
   let { contacts, q } = useLoaderData()
-  const [query, setQuery] = useState(q)
+  const [query, setQuery] = useState('')
   const navigation = useNavigation()
   const submit = useSubmit()
 
@@ -34,7 +34,8 @@ export default function Root() {
     new URLSearchParams(navigation.location.search).has('q')
 
   useEffect(() => {
-    setQuery(q)
+    //document.getElementById('search').value = q;
+    setQuery(q || '')
   }, [q])
 
   function onSearch(event) {
