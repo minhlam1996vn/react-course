@@ -1,11 +1,12 @@
 // import { styles } from './styles'
-import {
-  Container,
-  FormContainer,
-  Header,
-  Label,
-  LabelContainer,
-} from './styles'
+// import {
+//   Container,
+//   FormContainer,
+//   Header,
+//   Label,
+//   LabelContainer,
+// } from './styles'
+import styles from './main.module.css'
 
 export default function AddTodo() {
   return (
@@ -23,19 +24,33 @@ export default function AddTodo() {
     //   </div>
     // </div>
 
-    <Container>
-      <Header>TODO</Header>
+    // <Container>
+    //   <Header>TODO</Header>
 
-      <LabelContainer>
-        <Label>What needs to be Done?</Label>
-      </LabelContainer>
-      <FormContainer>
+    //   <LabelContainer>
+    //     <Label>What needs to be Done?</Label>
+    //   </LabelContainer>
+    //   <FormContainer>
+    //     <form>
+    //       <input type="text" />
+    //       <button>Add</button>
+    //     </form>
+    //   </FormContainer>
+    // </Container>
+
+    <div className={styles.container}>
+      <h2 className={styles.header}>TODO</h2>
+
+      <div className={styles.LabelContainer}>
+        <label className={styles.Label}>What needs to be Done?</label>
+      </div>
+      <div className={styles.FormContainer}>
         <form>
           <input type="text" />
           <button>Add</button>
         </form>
-      </FormContainer>
-    </Container>
+      </div>
+    </div>
   )
   // return (
   //   <div style={{ display: 'flex', flexDirection: 'column' }}>
