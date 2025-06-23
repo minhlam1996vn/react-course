@@ -28,4 +28,6 @@ This is a personal note for the things I’ve learned while studying React. It c
 8. quiz-app
 9. react-router
 10. react-styling
+
+https://medium.com/@sunilnepali844/create-a-scalable-react-app-with-redux-toolkit-and-typescript-629bf76dd81e
  -->
