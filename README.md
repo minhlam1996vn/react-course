@@ -27,4 +27,5 @@ This is a personal note for the things I’ve learned while studying React. It c
 7. counter-reducer
 8. quiz-app
 9. react-router
+10. react-styling
  -->
