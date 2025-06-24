@@ -7,8 +7,30 @@ import PageNotFound from './pages/PageNotFound'
 import PageNav from './components/PageNav'
 import AppLayout from './pages/AppLayout'
 import Login from './pages/Login'
+import CitiesList from './pages/CitiesList'
+import { useEffect, useState } from 'react'
 
 function App() {
+  const [cities, setCities] = useState('')
+  const [loading, setLoading] = useState(false)
+  const citiesUrl = 'http://localhost:9000/cities'
+  async function fetchCities() {
+    try {
+      setLoading(true)
+      let response = await fetch(citiesUrl)
+      let cities = await response.json()
+      setCities(cities)
+    } catch (e) {
+      console.log(e)
+    } finally {
+      setLoading(false)
+    }
+  }
+  useEffect(function () {
+    console.log('da vao day')
+    fetchCities()
+  }, [])
+
   return (
     <div>
       <div>Layout</div>
@@ -19,8 +41,14 @@ function App() {
           <Route path="about" element={<About />} />
           <Route path="login" element={<Login />} />
           <Route path="app" element={<AppLayout />}>
-            <Route index element={<div>Cities list</div>} />
-            <Route path="cities" element={<div>Cities List</div>} />
+            <Route
+              index
+              element={<CitiesList cities={cities} loading={loading} />}
+            />
+            <Route
+              path="cities"
+              element={<CitiesList cities={cities} loading={loading} />}
+            />
             <Route path="countries" element={<div>Cuntries list</div>} />
           </Route>
           <Route path="*" element={<PageNotFound />} />
