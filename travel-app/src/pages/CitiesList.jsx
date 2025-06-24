@@ -2,6 +2,7 @@ import Loader from '../components/Loader'
 import CityItem from '../components/CityItem'
 import Message from '../components/Message'
 import styles from './CitiesList.module.css'
+// import { useSearchParams } from 'react-router'
 
 export default function CitiesList({ cities, loading }) {
   if (loading) return <Loader />
