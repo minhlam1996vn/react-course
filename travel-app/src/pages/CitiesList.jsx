@@ -1,11 +1,17 @@
+import Loader from '../components/Loader'
+import CityItem from '../components/CityItem'
+import Message from '../components/Message'
+
 export default function CitiesList({ cities, loading }) {
-  console.log(cities)
-  console.log(loading)
+  if (loading) return <Loader />
+
+  if (!cities.length) return <Message message="Cities Data is not avialable" />
+
   return (
     <div>
-      <h2>Cities List</h2>
-      <pre>{JSON.stringify(cities, null, 2)}</pre>
-      {loading && <p>Loading...</p>}
+      {cities.map((city) => (
+        <CityItem city={city} key={city.name} />
+      ))}
     </div>
   )
 }

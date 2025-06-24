@@ -11,9 +11,10 @@ import CitiesList from './pages/CitiesList'
 import { useEffect, useState } from 'react'
 
 function App() {
-  const [cities, setCities] = useState('')
+  const [cities, setCities] = useState([])
   const [loading, setLoading] = useState(false)
-  const citiesUrl = 'http://localhost:9000/cities'
+
+  const citiesUrl = 'http://localhost:9001/cities'
   async function fetchCities() {
     try {
       setLoading(true)
@@ -49,7 +50,7 @@ function App() {
               path="cities"
               element={<CitiesList cities={cities} loading={loading} />}
             />
-            <Route path="countries" element={<div>Cuntries list</div>} />
+            <Route path="countries" element={<div>Countries list</div>} />
           </Route>
           <Route path="*" element={<PageNotFound />} />
         </Routes>
