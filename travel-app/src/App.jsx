@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router'
 import './App.css'
 import Home from './pages/Home'
@@ -8,7 +9,7 @@ import PageNav from './components/PageNav'
 import AppLayout from './pages/AppLayout'
 import Login from './pages/Login'
 import CitiesList from './pages/CitiesList'
-import { useEffect, useState } from 'react'
+import CountryList from './pages/CountryList'
 
 function App() {
   const [cities, setCities] = useState([])
@@ -50,7 +51,10 @@ function App() {
               path="cities"
               element={<CitiesList cities={cities} loading={loading} />}
             />
-            <Route path="countries" element={<div>Countries list</div>} />
+            <Route
+              path="countries"
+              element={<CountryList cities={cities} loading={loading} />}
+            />
           </Route>
           <Route path="*" element={<PageNotFound />} />
         </Routes>
