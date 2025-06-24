@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { BrowserRouter, Routes, Route } from 'react-router'
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router'
 import './App.css'
 import Home from './pages/Home'
 import Product from './pages/Product'
@@ -11,6 +11,7 @@ import Login from './pages/Login'
 import CitiesList from './pages/CitiesList'
 import CountryList from './pages/CountryList'
 import CityDetails from './pages/cityDetails'
+import AddCity from './pages/AddCity'
 
 function App() {
   const [cities, setCities] = useState([])
@@ -43,10 +44,12 @@ function App() {
           <Route path="about" element={<About />} />
           <Route path="login" element={<Login />} />
           <Route path="app" element={<AppLayout />}>
+            <Route index element={<Navigate to="cities" replace />} />
             <Route
               index
               element={<CitiesList cities={cities} loading={loading} />}
             />
+            <Route path="addcity" element={<AddCity />} />
             <Route
               path="cities"
               element={<CitiesList cities={cities} loading={loading} />}
