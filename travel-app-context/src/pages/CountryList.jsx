@@ -1,8 +1,11 @@
 import CountryItem from '../components/CountryItem'
 import Loader from '../components/Loader'
 import styles from './CountryList.module.css'
+import { useCity } from '../contexts/CityContext'
 
-export default function CountryList({ cities, loading }) {
+export default function CountryList() {
+  const { cities, loading } = useCity()
+
   if (loading) return <Loader />
 
   let countries = []
