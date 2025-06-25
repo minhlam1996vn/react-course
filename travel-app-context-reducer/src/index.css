@@ -1,0 +1,18 @@
+@import 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css';
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0px;
+  padding: 0px;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.align-items-center {
+  align-items: center;
+}
