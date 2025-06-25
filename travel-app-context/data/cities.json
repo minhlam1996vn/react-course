@@ -44,42 +44,6 @@
       "longitude": 151.2093,
       "emoji_flag": "🇦🇺",
       "date": "2023-12-02"
-    },
-    {
-      "id": "ecfb",
-      "name": "Dublin",
-      "country": "Ireland",
-      "latitude": "53.30462107510271",
-      "longitude": "-6.356942411470095",
-      "emoji_flag": "IE",
-      "date": "6/25/2025"
-    },
-    {
-      "id": "5ef2",
-      "name": "Muroto",
-      "country": "Japan",
-      "latitude": "33.33970700424029",
-      "longitude": "134.2227400183409",
-      "emoji_flag": "JP",
-      "date": "6/25/2025"
-    },
-    {
-      "id": "b57a",
-      "name": "Miyazaki",
-      "country": "Japan",
-      "latitude": "31.970803930433096",
-      "longitude": "131.5867487302483",
-      "emoji_flag": "JP",
-      "date": "6/25/2025"
-    },
-    {
-      "id": "5e1d",
-      "name": "Da Nang",
-      "country": "Viet Nam",
-      "latitude": "16.05505176219945",
-      "longitude": "108.23036176625548",
-      "emoji_flag": "VN",
-      "date": "6/25/2025"
     }
   ]
 }
