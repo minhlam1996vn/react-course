@@ -1,49 +1,85 @@
 {
-	"cities": [
-		{
-			"id": 1,
-			"name": "New York",
-			"country": "United States",
-			"latitude": 40.7128,
-			"longitude": -74.006,
-			"emoji_flag": "🇺🇸",
-			"date": "2023-12-02"
-		},
-		{
-			"id": 2,
-			"name": "Los Angeles",
-			"country": "United States",
-			"latitude": 34.0522,
-			"longitude": -118.2437,
-			"emoji_flag": "🇺🇸",
-			"date": "2023-12-02"
-		},
-		{
-			"id": 3,
-			"name": "London",
-			"country": "United Kingdom",
-			"latitude": 51.5074,
-			"longitude": -0.1278,
-			"emoji_flag": "🇬🇧",
-			"date": "2023-12-02"
-		},
-		{
-			"id": 4,
-			"name": "Tokyo",
-			"country": "Japan",
-			"latitude": 35.6895,
-			"longitude": 139.6917,
-			"emoji_flag": "🇯🇵",
-			"date": "2023-12-02"
-		},
-		{
-			"id": 5,
-			"name": "Sydney",
-			"country": "Australia",
-			"latitude": -33.8688,
-			"longitude": 151.2093,
-			"emoji_flag": "🇦🇺",
-			"date": "2023-12-02"
-		}
-	]
+  "cities": [
+    {
+      "id": 1,
+      "name": "New York",
+      "country": "United States",
+      "latitude": 40.7128,
+      "longitude": -74.006,
+      "emoji_flag": "🇺🇸",
+      "date": "2023-12-02"
+    },
+    {
+      "id": 2,
+      "name": "Los Angeles",
+      "country": "United States",
+      "latitude": 34.0522,
+      "longitude": -118.2437,
+      "emoji_flag": "🇺🇸",
+      "date": "2023-12-02"
+    },
+    {
+      "id": 3,
+      "name": "London",
+      "country": "United Kingdom",
+      "latitude": 51.5074,
+      "longitude": -0.1278,
+      "emoji_flag": "🇬🇧",
+      "date": "2023-12-02"
+    },
+    {
+      "id": 4,
+      "name": "Tokyo",
+      "country": "Japan",
+      "latitude": 35.6895,
+      "longitude": 139.6917,
+      "emoji_flag": "🇯🇵",
+      "date": "2023-12-02"
+    },
+    {
+      "id": 5,
+      "name": "Sydney",
+      "country": "Australia",
+      "latitude": -33.8688,
+      "longitude": 151.2093,
+      "emoji_flag": "🇦🇺",
+      "date": "2023-12-02"
+    },
+    {
+      "id": "ecfb",
+      "name": "Dublin",
+      "country": "Ireland",
+      "latitude": "53.30462107510271",
+      "longitude": "-6.356942411470095",
+      "emoji_flag": "IE",
+      "date": "6/25/2025"
+    },
+    {
+      "id": "5ef2",
+      "name": "Muroto",
+      "country": "Japan",
+      "latitude": "33.33970700424029",
+      "longitude": "134.2227400183409",
+      "emoji_flag": "JP",
+      "date": "6/25/2025"
+    },
+    {
+      "id": "b57a",
+      "name": "Miyazaki",
+      "country": "Japan",
+      "latitude": "31.970803930433096",
+      "longitude": "131.5867487302483",
+      "emoji_flag": "JP",
+      "date": "6/25/2025"
+    },
+    {
+      "id": "5e1d",
+      "name": "Da Nang",
+      "country": "Viet Nam",
+      "latitude": "16.05505176219945",
+      "longitude": "108.23036176625548",
+      "emoji_flag": "VN",
+      "date": "6/25/2025"
+    }
+  ]
 }
