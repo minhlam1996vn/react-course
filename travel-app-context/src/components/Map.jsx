@@ -10,19 +10,21 @@ import {
 import styles from './Map.module.css'
 import { useCity } from '../contexts/CityContext'
 import { useState, useEffect } from 'react'
+import { useUrlPosition } from '../hooks/useUrlPosition'
 
 export default function Map() {
-  const [searchParams, setSearchParams] = useSearchParams()
-  const navigate = useNavigate()
+  // const [searchParams, setSearchParams] = useSearchParams()
+  // const navigate = useNavigate()
   const { cities } = useCity()
   const [mapPosition, setMapPosition] = useState([40, 0])
 
-  const mapLat = searchParams.get('lat')
-  const mapLong = searchParams.get('long')
+  // const mapLat = searchParams.get('lat')
+  // const mapLong = searchParams.get('long')
+  const { mapLat, mapLong } = useUrlPosition()
 
-  function showForm() {
-    navigate('/app/addcity')
-  }
+  // function showForm() {
+  //   navigate('/app/addcity')
+  // }
 
   useEffect(() => {
     if (mapLat && mapLong) setMapPosition([mapLat, mapLong])
